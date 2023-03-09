@@ -1,0 +1,271 @@
+<div id="wrapper" class="right-panel">
+  <div class="print-section">
+    <div class="heading">
+      <h2>Searchable Design Pvt. Ltd.</h2>
+      <h6>Samakhusi, Kathmandu-26, Nepal</h6>
+    </div>
+
+    <div class="information">
+      <b>Name:</b>
+      <p class="inline">{{invoice.clientname}}</p><br>
+      <b>Project Name:</b>
+      <p class="inline"> {{invoice.projectname}}</p> <br>
+      <b>Project Type:</b>
+      <p class="inline"> {{invoice.projecttype}}</p>
+      <hr>
+    </div>
+    <div class="item-details">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>S.No.</th>
+            <th>Items Details</th>
+            <th>Quantity</th>
+            <th>Rate</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+
+
+        <tr *ngFor="let detail of invoice.itemdetails, let i=index">
+          <td>{{i+1}}</td>
+          <td>{{detail.itemsdetails}}</td>
+
+          <td>{{detail.quantity}}</td>
+
+          <td>{{detail.rate}}</td>
+          <td>{{detail.amount}}</td>
+
+        </tr>
+      </table>
+    </div>
+
+    <div class="row right">
+      <div class="col-md-6 offset-md-6">
+        <div class="border-bottom two-col-list">
+          <div class="row align-items-center">
+            <div class="col-md-8">
+              <p><strong>Sub Total</strong></p>
+            </div>
+            <div class="col-md-4">
+              <div class="text-right">
+                <b>{{invoice.subtotal}}</b>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="border-bottom two-col-list">
+          <div class="row align-items-center">
+            <div class="col-md-8">
+              <p><strong>Discount</strong></p>
+            </div>
+            <div class="col-md-4">
+              <div class="text-right">
+                <b>{{invoice.discount}}</b>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="two-col-list">
+          <div class="row align-items-center">
+            <div class="col-md-8">
+              <p><strong>Total</strong></p>
+            </div>
+            <div class="col-md-4">
+              <div class="text-right">
+                <b>{{invoice.total}}</b>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <hr>
+    <div class="date">
+      <div class="issue">
+        <b> Issued On: </b>
+        <p class="inline">{{invoice.issuedate}}</p>
+      </div>
+
+      <div class="due">
+        <b>Due Date:</b>
+        <p class="inline">{{invoice.duedate}}</p>
+      </div>
+    </div>
+    <p style="font-style: italic; text-align:center; margin-top: 50px;">*Please make the payment before the due date.
+    </p>
+  </div>
+  <div style="display: inline-block;">
+    <div>
+      <button class="btn btn-primary print" (click)="print()">Print Invoice</button>
+    </div>
+    <div>
+      <button class="btn btn-primary" data-target="#profile_info"  data-toggle="modal" style="display:inline;">Edit <fa-icon></fa-icon></button>
+    </div>
+  </div>
+
+
+  <!-- ***************************************modal *********************************8 -->
+  <div class="modal-wrap">
+    <!-- Modal -->
+    <div class="modal fade" id="profile_info" tabindex="-1" role="dialog" aria-labelledby="profile_infoTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="profile_infoTitle">Edit Invoice</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <div class="form-wrap p-3">
+              <div class="row">
+                <div class="col-lg-3">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <fa-icon [icon]="['fas','user']"></fa-icon>
+                      </div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Client Name"
+                      [(ngModel)]="params.clientname">
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <fa-icon [icon]="['fas','user']"></fa-icon>
+                      </div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Project Name"
+                      [(ngModel)]="params.projectname">
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <fa-icon [icon]="['fas','envelope']"></fa-icon>
+                      </div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Project Type"
+                      [(ngModel)]="params.projecttype">
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <fa-icon [icon]="['fas','phone']"></fa-icon>
+                      </div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" [(ngModel)]="params.phone"
+                      placeholder="Created By">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-3">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <fa-icon [icon]="['fas','home']"></fa-icon>
+                      </div>
+                    </div>
+                    <input type="date" class="form-control" id="inlineFormInputGroup" placeholder="Issue Date"
+                      [(ngModel)]="params.issuedate">
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <fa-icon [icon]="['fas','home']"></fa-icon>
+                      </div>
+                    </div>
+                    <input type="date" class="form-control" id="inlineFormInputGroup" placeholder="Due Date"
+                      [(ngModel)]="params.duedate">
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <fa-icon [icon]="['fas','chess-board']"></fa-icon>
+                      </div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Invoice Number" disabled="true"
+                      [(ngModel)]="params.invoicenumber">
+                  </div>
+                </div>
+              </div>
+              <div class="table-wrap">
+                <div class="table-responsive-md">
+                  <table class="table mb-0
+                                      table-bordered">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">Item Details</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Rate</th>
+                        <th scope="col">Tax</th>
+                        <th scope="col">Amount</th>
+                        <th><button class="btn btn-primary" (click)="addetails()">
+                            <fa-icon [icon]="['fas','plus']"></fa-icon>
+                          </button></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <ng-container *ngFor="let details of params.itemdetails,let i= index">
+                        <tr>
+                          <td>
+                            <input type="text" class="form-control" [(ngModel)]="params.itemdetails[i].itemsdetails" #idetails="ngModel"
+                              required>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" [(ngModel)]="params.itemdetails[i].quantity" required #quantity="ngModel">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" [(ngModel)]="params.itemdetails[i].rate" required #rate="ngModel">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" [(ngModel)]="params.itemdetails[i].tax" required #tax="ngModel">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" [(ngModel)]="params.itemdetails[i].amount" required>
+                          </td>
+                          <td>
+                            <button class="btn btn-danger " (click)="removedetail(i)">
+                              <fa-icon [icon]="['fas','trash']"></fa-icon>
+                            </button>
+                          </td>
+                        </tr>
+                      </ng-container>
+                    </tbody>
+                    <!-- <button  class="btn btn-success"  (click)="adddetails()">Add+</button> -->
+                  </table>
+                </div>
+              </div>
+              <div class="form-group">
+                <textarea name="" class="form-control" placeholder="Add Description" rows="6"
+                  [(ngModel)]="params.description"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-target="#edit" (click)="saveChange()" data-dismiss="modal">Save
+              changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

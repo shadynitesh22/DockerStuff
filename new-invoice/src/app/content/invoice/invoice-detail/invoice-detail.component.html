@@ -1,0 +1,157 @@
+<div id="wrapper" class="right-panel">
+  <!--section-->
+  <section class="dashboard-block">
+    <div class="page-content">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="sort-box clearfix">
+            <div class="sort-dropdown">
+              <div class="btn-group">
+                <div class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <fa-icon [icon]="['fas','bars']"></fa-icon>
+                </div>
+                <div class="dropdown-menu">
+                  <span class="dropdown-item">Sort Result By</span>
+                  <a class="dropdown-item" href="#">Creation
+                    Date</a>
+                  <a class="dropdown-item" href="#">Due Date
+                  </a>
+                  <a class="dropdown-item" href="#">Amount</a>
+                </div>
+              </div>
+            </div>
+            <div class="search-bar-wrap">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search clients">
+                <button type="submit" class="positioned-btn"> <fa-icon [icon]="['fas','search']"></fa-icon> </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="text-md-right">
+            <a href="#" class="round-btn mr-2"><fa-icon [icon]="['fas','print']"></fa-icon> Print </a>
+            <a href="#" class="round-btn"><fa-icon [icon]="['fas','file-pdf']"></fa-icon>Download Pdf </a>
+          </div>
+        </div>
+      </div>
+      <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+        <strong> <fa-icon [icon]="['fas','info-circle']"></fa-icon> Note:</strong> This page has been enhanced for printing. Click the
+        print button at the bottom of the invoice to test.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="shadowed-box bg-white mt-3 p-3 profile-detail-wrap">
+        <div class="row">
+          <div class="col-md-5">
+            <div class="profile-left-wrap media">
+              <div class="profile-img-wrap align-self-start mr-3">
+                <div class="profile-img">
+                  <img alt="" src="assets/img/user.png">
+                </div>
+              </div>
+              <div class="profle-desc media-body">
+                <h3> ABC Company</h3>
+                <p>IT Company</p>
+                <p>Issued Date : 1st Jan 2013</p>
+                <p>Invoice ID : FT-0001</p>
+                <p>Business</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="profile-right-col border-left pl-5">
+              <div class="pro-edit"><a data-target="#profile_info" data-toggle="modal" class="edit-icon" href="#"
+                  title="Edit"><fa-icon [icon]="['fas','pencil-alt']"></fa-icon></a></div>
+              <p>Created By : Admin </p>
+              <p>Due Date : 1st Jan 2013</p>
+              <p>Save as Draft- The Estimate will be Saved as Draft and can only be viewed at your
+                end. Your client will not be able to view until it is sent. </p>
+              <p>Save as Draft- The Estimate will be Saved as Draft and can only be viewed at your
+                end. Your client will not be able to view until it is sent.</p>
+
+            </div>
+          </div>
+        </div>
+        <div class="table-wrap mt-4">
+          <div class="table-responsive-md">
+            <table class="table mb-0 table-bordered">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Item Details</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Rate</th>
+                  <th scope="col">Tax</th>
+                  <th scope="col">Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <p>Save as Draft- The Estimate will be Saved as Draft and can only be viewed
+                      at your end. Your client will not be able to view until it is sent.</p>
+                  </td>
+                  <td>
+                    <p>2</p>
+                  </td>
+                  <td>
+                    <p>$ 200.00</p>
+                  </td>
+                  <td>
+                    <p>5%</p>
+                  </td>
+                  <td>
+                    <p>$100.00</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 offset-md-6">
+            <div class="border-bottom two-col-list">
+              <div class="row align-items-center">
+                <div class="col-md-8">
+                  <p><strong>Sub Total</strong></p>
+                </div>
+                <div class="col-md-4">
+                  <div class="text-right">
+                    <p>$100.00</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="border-bottom two-col-list">
+              <div class="row align-items-center">
+                <div class="col-md-8">
+                  <p><strong>Discount</strong></p>
+                </div>
+                <div class="col-md-4">
+                  <div class="text-right">
+                    <p>$10.00</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="two-col-list">
+              <div class="row align-items-center">
+                <div class="col-md-8">
+                  <p><strong>Total</strong></p>
+                </div>
+                <div class="col-md-4">
+                  <div class="text-right">
+                    <p><strong>$100.00</strong></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--section-->
+
+</div>

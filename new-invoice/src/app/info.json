@@ -1,0 +1,13 @@
+[{
+  "email": "aayushshrestha@gmail.com",
+  "password" : "helloworld"
+},
+{
+  "email" : "searchable@gmail.com",
+  "password": "searchable"
+},
+{
+  "email" : "helloworld@gmail.com",
+  "password" : "helloworld"
+}
+]

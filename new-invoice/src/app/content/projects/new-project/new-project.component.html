@@ -1,0 +1,218 @@
+<div id="wrapper" class="right-panel">
+  <!--section-->
+  <section class="dashboard-block">
+
+    <div class="page-content">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="sort-box clearfix">
+            <div class="sort-dropdown">
+              <div class="btn-group">
+                <div class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <fa-icon [icon]="['fas','bars']"></fa-icon>
+                </div>
+                <div class="dropdown-menu">
+                  <span class="dropdown-item">Sort Result By</span>
+                  <a class="dropdown-item" href="#">Creation
+                    Date</a>
+                  <a class="dropdown-item" href="#">Due Date
+                  </a>
+                  <a class="dropdown-item" href="#">Amount</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group text-right mb-0">
+            <button type="button" class="submit-btn" (click)="onSubmit()" [disabled]="!email.valid && !country.valid">Save</button>
+          </div>
+        </div>
+      </div>
+      <div class="shadowed-box bg-white mt-3">
+        <div class="box-header">
+          <p>Basic Information</p>
+        </div>
+        <div class="form-wrap p-3">
+          <div class="client-image-wrap">
+            <div class="client-img">
+              <img src="assets/img/user.png" alt="">
+            </div>
+            <div class="client-desc">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="customFile" >
+                <input type='file'>
+                <label class="custom-file-label" for="customFile">Choose file</label>
+              </div>
+              <hr>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-3">
+              <div class="input-group form-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                     <fa-icon [icon]="['fas','user']"></fa-icon>
+</div>
+                </div>
+                <!-- <input type="text" class="form-control" [(ngModel)]="params.client" pattern="[a-zA-Z]+$" id="inlineFormInputGroup" placeholder="Client Name" required> -->
+                <select name="Client Name" #cname="ngModel" class="custom-select" [(ngModel)]="params.client" required>
+                    <option value="">Client Name</option>
+                  <ng-container *ngFor="let client of clients">
+                    <option value={{client._id}}>{{client.firstname}} {{client.lastname}}</option>
+                  </ng-container>
+                </select>
+
+              </div>
+              <span *ngIf="!cname.value && cname.touched">Please select a client</span>
+            </div>
+            <div class="col-lg-3">
+              <div class="input-group form-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">                  <fa-icon [icon]="['fas','user']"></fa-icon>
+</div>
+                </div>
+                <input type="text" class="form-control" #pname="ngModel" [(ngModel)]="params.projectname" pattern="[a-zA-Z ]+$"  id="inlineFormInputGroup" placeholder="Project Name" required>
+                </div>
+                <span *ngIf="pname.errors && pname.touched">Please enter valid information.</span>
+            </div>
+            <div class="col-lg-3">
+              <div class="input-group form-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                  <fa-icon [icon]="['fas','layer-group']"></fa-icon>
+
+                  </div>
+                  <!-- pattern="^9[7-8]+[0-9]{8}$" -->
+                </div>
+                <input type="text" class="form-control" #ptype="ngModel" [(ngModel)]="params.projecttype" #phone="ngModel"  id="inlineFormInputGroup"  placeholder="Project Type" required>
+              </div>
+              <!-- <span *ngIf="phone.errors && phone.touched">Enter Valid phone Address</span> -->
+              <span *ngIf="ptype.errors && ptype.touched">Please enter valid information.</span>
+
+            </div>
+            <div class="col-lg-3">
+              <div class="input-group form-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                  <fa-icon [icon]="['fas','envelope']"></fa-icon>
+
+                  </div>
+                </div>
+                <input type="text" class="form-control" #email="ngModel" [(ngModel)]="params.email" id="inlineFormInputGroup" pattern="^[a-zA-Z 0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Email Address" required>
+              </div>
+              <span *ngIf="email.errors && email.touched">Enter Valid Email Address</span>
+            </div>
+
+            <!-- <div class="col-lg-3">
+              <div class="input-group form-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                  <fa-icon [icon]="['fas','phone']"></fa-icon>
+
+                  </div>
+
+                </div>
+                <input type="text" class="form-control" [(ngModel)]="params.phone" #phone="ngModel" (ngModelChange)="numberformatter()" id="inlineFormInputGroup"  placeholder="Phone Number" required>
+              </div>
+              <span *ngIf="phone.errors && phone.touched">Enter Valid phone Address</span>
+
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="shadowed-box bg-white mt-3">
+        <div class="box-header">
+          <p>Address</p>
+        </div>
+        <div class="form-wrap p-3">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="input-group form-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                  <fa-icon [icon]="['fas','home']"></fa-icon>
+
+                  </div>
+                </div>
+                <input type="text" class="form-control" #address="ngModel" [(ngModel)]="params.address"  id="inlineFormInputGroup" placeholder="Address (Line 1)" required>
+              </div>
+              <span *ngIf="address.errors && address.touched">Please enter valid information.</span>
+
+            </div>
+            <div class="col-lg-6">
+              <div class="input-group form-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                  <fa-icon [icon]="['fas','home']"></fa-icon>
+
+                  </div>
+                </div>
+                <input type="text" class="form-control" [(ngModel)]="params.address2" id="inlineFormInputGroup" placeholder="Address (Line 2)">
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="input-group form-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <fa-icon [icon]="['fas','chess-board']"></fa-icon>
+                  </div>
+                </div>
+                <input type="text" class="form-control" #postalcode="ngModel" [(ngModel)]="params.postalcode" id="inlineFormInputGroup" placeholder="Postal Code" required>
+              </div>
+              <span *ngIf="postalcode.errors && postalcode.touched">Please enter valid information.</span>
+
+            </div>
+            <div class="col-lg-3">
+              <div class="input-group form-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <fa-icon [icon]="['fas','map-marked-alt']"></fa-icon>
+                  </div>
+                </div>
+                <input type="text" class="form-control" #state="ngModel" [(ngModel)]="params.state" id="inlineFormInputGroup" placeholder="State" required>
+              </div>
+              <span *ngIf="state.errors && state.touched">Please enter valid information.</span>
+
+            </div>
+            <div class="col-lg-3">
+              <div class="input-group form-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+
+                    <fa-icon [icon]="['fas','map-pin']"></fa-icon>
+                  </div>
+                </div>
+                <input type="text" class="form-control" #city="ngModel" [(ngModel)]="params.city" id="inlineFormInputGroup" placeholder="City" required>
+              </div>
+              <span *ngIf="city.errors && city.touched">Please enter valid information.</span>
+
+            </div>
+            <div class="col-lg-3">
+              <div class="input-group form-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <fa-icon [icon]="['fas','map-marker-alt']"></fa-icon>
+                  </div>
+                </div>
+                <input type="text" class="form-control" #country="ngModel" [(ngModel)]="params.country" id="inlineFormInputGroup" placeholder="Country" required>
+              </div>
+              <span *ngIf="country.errors && country.touched">Please enter valid information.</span>
+
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea name="" class="form-control" [(ngModel)]="params.description" placeholder="Add Description" rows="6"></textarea>
+          </div>
+          <div class="form-group">
+            <button type="button" class="submit-btn" [disabled]="!email.valid && !country.valid" (click)="onSubmit()">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--section-->
+
+</div>

@@ -1,0 +1,38 @@
+.inline
+{
+  display: inline;
+
+}
+.heading{
+  text-align: center;
+}
+.total
+{
+  margin-top: 20%;
+}
+td{
+  text-align: center;
+}
+
+.issue{
+
+  display: inline;
+}
+.due{
+  margin-left: 70% ;
+  display: inline;
+}
+.right-panel{
+  margin-left: 210px;
+  padding:10px 5px 0px 5px;
+
+}
+th,td,tr{
+  border: 1px solid black;
+}
+table{
+  min-height: 30%;
+}
+.item-details{
+  margin-bottom: 120px;
+}

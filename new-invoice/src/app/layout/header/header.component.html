@@ -1,0 +1,42 @@
+<div class="top-bar shadowed-box bg-white">
+  <div class="page-title">
+    <div class="row">
+      <div class="col-lg-6">
+        <h1>
+         {{header}}
+        </h1>
+      </div>
+      <div class="col-lg-6">
+        <div class="text-lg-right">
+          <div class="dropdown-wrap">
+            <div class="dropdown">
+              <ng-container *ngIf="value" >
+              <a class="green-btn dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Add New
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <ng-container *ngFor="let item of value.addnew">
+                <a class="dropdown-item" routerLink="{{item.redirectPath}}">
+                  <!-- <fa-icon [icon]="['fas', ""]"></fa-icon> -->
+
+                  {{item.name}}</a>
+                </ng-container>
+                <!-- <a class="dropdown-item" routerLink="./projects/new-project">
+                  <fa-icon [icon]="['fas','layer-group']"></fa-icon>
+                  Project</a>
+                <a class="dropdown-item" href="new-client.html">
+                  <fa-icon [icon]="['fas', 'user-tie']"></fa-icon>
+                  Client</a> -->
+
+              </div>
+            </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

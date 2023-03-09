@@ -1,0 +1,306 @@
+<div id="wrapper" class="right-panel">
+  <!--section-->
+
+  <section class="dashboard-block">
+    <div class="page-content">
+      <div class="sort-box clearfix">
+        <div class="sort-dropdown">
+          <div class="btn-group">
+            <div class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <fa-icon [icon]="fabar"></fa-icon>
+            </div>
+            <div class="dropdown-menu">
+              <span class="dropdown-item">Sort Result By</span>
+              <a class="dropdown-item" href="#">Creation
+                Date</a>
+              <a class="dropdown-item" href="#">Due Date
+              </a>
+              <a class="dropdown-item" href="#">Amount</a>
+            </div>
+          </div>
+        </div>
+        <div class="search-bar-wrap">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search clients">
+            <button type="submit" class="positioned-btn">
+              <fa-icon [icon]="fasearch"></fa-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ************************************Clients***************************************************** -->
+      <div class="mt-3">
+        <div class="row">
+
+          <!--************** Loop from here ********************** -->
+
+
+          <ng-container *ngFor="let client of displayclients; let i=index">
+            <!-- | paginate: { itemsPerPage: 5, currentPage: p } -->
+            <ng-container *ngIf="client">
+              <div class="col-md-3">
+                <div class="profile-widget">
+                  <div class="profile-img">
+                    <a routerLink="./client-profile"><img src="http://localhost:5200/images/{{client.image}}"
+                        alt=""></a>
+                  </div>
+                  <div class="dropdown profile-action">
+                    <a href="#" class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      <fa-icon [icon]="faellipsis"></fa-icon>
+                    </a>
+                    <div class="dropdown-menu
+                                    dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="#" data-target="#profile_info" data-toggle="modal"
+                        (click)="edit(i)">
+                        <fa-icon [icon]="fapencilalt"></fa-icon> Edit
+                      </a>
+                      <a class="dropdown-item" href="#" data-target="#delete_info" data-toggle="modal"
+                        (click)="delete(i)">
+                        <fa-icon [icon]="fatrashalt"></fa-icon> Delete
+                      </a>
+                    </div>
+                  </div>
+                  <div class="profle-desc">
+                    <h3> <a routerLink="../client-info/{{client._id}}"> {{client.firstname}} {{client.lastname}}</a>
+                    </h3>
+
+                    <p>{{client.email}}</p>
+                    <p>+{{client.phone}}</p>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+        </div>
+
+
+
+
+        <!-- pagination code -->
+        <div class="pagination-wrap">
+          <nav aria-label="...">
+            <ul class="pagination justify-content-center">
+              <li class="page-item ">
+
+                <a class="page-link" routerLink="../{{+page-1}}" *ngIf="page>1" (click)="changeFlag()">Previous</a>
+                <!-- aria-disabled="true" tabindex="-1" disabled -->
+              </li>
+
+              <li class="page-item">
+                <a class="page-link" routerLink="../1" (click)="changeFlag()">1</a>
+              </li>
+              <li class="page-item" aria-current="page">
+                <a class="page-link" routerLink="../2" (click)="changeFlag()">2
+                  <!-- <span class="sr-only">(current)</span> -->
+                </a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" routerLink="../3" (click)="changeFlag()">3</a>
+              </li>
+              <ng-container *ngIf="page>=3 && displayclients[+page*5]">
+                <li class="page-item">
+                  <a class="page-link" routerLink="../{{+page+1}}" (click)="changeFlag()">{{+page+1}}</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" routerLink="../{{+page+2}}" (click)="changeFlag()">{{+page+2}}</a>
+                </li>
+              </ng-container>
+              <li class="page-item">
+                <a class="page-link" routerLink="../{{+page+1}}" *ngIf="page<3"  (click)="changeFlag()"                                                                                                                                                        z`>Next</a>
+              </li>
+            </ul>
+
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!--Modal-->
+  <div class="modal-wrap">
+    <!-- Modal -->
+    <div class="modal fade" id="profile_info" tabindex="-1" role="dialog" aria-labelledby="profile_infoTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="profile_infoTitle">Profile
+              Information</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-wrap p-3">
+              <div class="client-image-wrap">
+                <div class="client-img">
+                  <img src="assets/img/user.png" alt="">
+                </div>
+                <div class="client-desc">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="customFile">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-3">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <fa-icon [icon]="['fas','user']"></fa-icon>
+                      </div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="First Name"
+                      [(ngModel)]="params.firstname">
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <fa-icon [icon]="['fas','user']"></fa-icon>
+                      </div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Last Name"
+                      [(ngModel)]="params.lastname">
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <fa-icon [icon]="['fas','envelope']"></fa-icon>
+                      </div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Email Address"
+                      [(ngModel)]="params.email">
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <fa-icon [icon]="['fas','phone']"></fa-icon>
+                      </div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" [(ngModel)]="params.phone"
+                      placeholder="Phone Number" (ngModelChange)="numberformatter()">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <fa-icon [icon]="['fas','home']"></fa-icon>
+                      </div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Address (Line 1)"
+                      [(ngModel)]="params.address">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <fa-icon [icon]="['fas','home']"></fa-icon>
+                      </div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Address (Line 2)"
+                      [(ngModel)]="params.address2">
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <fa-icon [icon]="['fas','chess-board']"></fa-icon>
+                      </div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Postal Code"
+                      [(ngModel)]="params.postalcode">
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <fa-icon [icon]="['fas','map-marked-alt']"></fa-icon>
+                      </div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="State"
+                      [(ngModel)]="params.state">
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <fa-icon [icon]="['fas','map-pin']"></fa-icon>
+                      </div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="City"
+                      [(ngModel)]="params.city">
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <fa-icon [icon]="['fas','map-marker-alt']"></fa-icon>
+                      </div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Country"
+                      [(ngModel)]="params.country">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <textarea name="" class="form-control" placeholder="Add Description" rows="6"
+                  [(ngModel)]="params.description"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="saveChange()" data-dismiss="modal">Save
+              changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Modal -->
+    <!-- deleteModal -->
+    <div class="modal fade" id="delete_info" tabindex="-1" role="dialog" aria-labelledby="delete_infoTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="delete_infoTitle">Delete
+              Information</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body text-center">
+            <p>Are you sure you want to delete?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="confirmDelete()">Ok</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Modal -->
+  </div>
+</div>

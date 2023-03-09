@@ -1,0 +1,73 @@
+[
+  {
+    "id": "dashboard",
+    "name": "Dashboard",
+    "addnew": [
+      {
+        "name": "Invoice",
+        "redirectPath": "./invoice/new-invoice"
+      },
+      {
+        "name": "Project",
+        "redirectPath": "./projects/new-project"
+      },
+      {
+        "name": "Client",
+        "redirectPath": "./clients/new-client"
+      }
+    ]
+  },
+  {
+    "id": "dashboard",
+    "name": "Dashboard1",
+    "addnew": [
+      {
+        "name": "Invoice",
+        "redirectPath": "./invoice/new-invoice",
+        "icon":"file-alt"
+      },
+      {
+        "name": "Project",
+        "redirectPath": "./projects/new-project",
+        "icon":"layer-group"
+
+      },
+      {
+        "name": "Client",
+        "redirectPath": "./clients/new-client",
+        "icon":"user-tie"
+
+      }
+    ]
+  },
+  {
+    "id": "projects",
+    "name": "Projects",
+    "addnew": [
+      {
+        "name": "Project",
+        "redirectPath": "./projects/new-project"
+      }
+    ]
+  },
+  {
+    "id": "clients",
+    "name": "Clients",
+    "addnew": [
+      {
+        "name": "Client",
+        "redirectPath": "./clients/new-client"
+      }
+    ]
+  },
+  {
+    "id": "invoices",
+    "name": "Invoice",
+    "addnew": [
+      {
+        "name": "Invoice",
+        "redirectPath": "./invoice/new-invoice"
+      }
+    ]
+  }
+]

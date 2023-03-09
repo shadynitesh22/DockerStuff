@@ -1,0 +1,13 @@
+.delete-btn, .edit-btn
+{
+  background-color: transparent;
+  padding: 1px;
+  margin-left: 5px;
+}
+.delete-btn:hover{
+background-color: white;
+opacity: .6;
+}
+.edit-btn{
+  color: rgba(22, 92, 223, 0.781);
+}

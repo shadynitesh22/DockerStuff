@@ -1,0 +1,26 @@
+version: '3.4'
+services:
+  backend:
+    container_name: backend-invoice
+    build:
+      context: ./backendnew-invoice
+      dockerfile: Dockerfile
+ 
+    volumes:
+      - ./backendnew-invoice:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 5200:5200
+
+  frontend:
+    container_name: frontend-invoice
+    build:
+      context: ./new-invoice
+      dockerfile: Dockerfile
+   
+    volumes:
+      - ./new-invoice:/usr/src/app
+      - /usr/src/app/node_modules
+  
+    ports:
+      - 4200:4200

@@ -1,0 +1,39 @@
+<div class="right-panel">
+<p>setting works!</p>
+<div class="page-content">
+
+<div>
+  <b>Client</b>
+  <div class="custom-control custom-radio  custom-control-inline">
+    <input type="radio" id="customRadioInline1" name="customRadioInline1" value="frontend" [(ngModel)]="params.client"
+      class="custom-control-input">
+    <label class="custom-control-label" for="customRadioInline1">frontend</label>
+  </div>
+  <div class="custom-control custom-radio  custom-control-inline">
+    <input type="radio" id="customRadioInline2" name="customRadioInline2" value="backend" [(ngModel)]="params.client"
+      class="custom-control-input">
+    <label class="custom-control-label" for="customRadioInline2">backend</label>
+  </div>
+</div>
+<div>
+  <b>Projects</b>
+  <div class="custom-control custom-radio  custom-control-inline">
+    <input type="radio" id="customRadioInline3" name="customRadioInline3" value="frontend" [(ngModel)]="params.project"
+      class="custom-control-input">
+    <label class="custom-control-label" for="customRadioInline3">frontend</label>
+  </div>
+  <div class="custom-control custom-radio  custom-control-inline">
+    <input type="radio" id="customRadioInline4" name="customRadioInline4" value="backend" [(ngModel)]="params.project"
+      class="custom-control-input">
+    <label class="custom-control-label" for="customRadioInline4">backend</label>
+  </div>
+</div>
+<div class="shadowed-box bg-white mt-3">
+  <div class="form-group">
+    <button type="button" class="submit-btn" (click)="OnSubmit()">
+      Save
+    </button>
+  </div>
+</div>
+</div>
+</div>

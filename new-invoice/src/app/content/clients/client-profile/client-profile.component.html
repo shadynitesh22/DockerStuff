@@ -1,0 +1,200 @@
+<div id="wrapper" class="right-panel">
+  <!--section-->
+  <section class="dashboard-block">
+    <div class="page-content">
+      <div class="sort-box clearfix">
+        <div class="sort-dropdown">
+          <div class="btn-group">
+            <div class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <fa-icon [icon]="['fas','bars']"></fa-icon>
+            </div>
+            <div class="dropdown-menu">
+              <span class="dropdown-item">Sort Result By</span>
+              <a class="dropdown-item" href="#">Creation
+                Date</a>
+              <a class="dropdown-item" href="#">Due Date
+              </a>
+              <a class="dropdown-item" href="#">Amount</a>
+            </div>
+          </div>
+        </div>
+        <div class="search-bar-wrap">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search clients">
+            <button type="submit" class="positioned-btn"> <fa-icon [icon]="['fas','search']"></fa-icon></button>
+          </div>
+        </div>
+      </div>
+      <div class="shadowed-box bg-white mt-3 p-3 profile-detail-wrap">
+        <div class="row">
+          <div class="col-md-5">
+            <div class="profile-left-wrap media">
+              <div class="profile-img-wrap align-self-start mr-3">
+                <div class="profile-img">
+                  <img alt="" src="assets/img/avatar-02.jpg">
+                </div>
+              </div>
+              <div class="profle-desc media-body">
+                <h3> {{clientdetails.firstname}} {{clientdetails.lastname}}</h3>
+                <p>Date of Join : 1st Jan 2013</p>
+                <p>Client ID : FT-0001</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="profile-right-col border-left pl-5">
+              <div class="pro-edit"><a data-target="#profile_info" data-toggle="modal" class="edit-icon" href="#"
+                  title="Edit"><fa-icon [icon]="['fas','pencil-alt']"></fa-icon></a></div>
+              <p>Phone: {{clientdetails.phone}} </p>
+              <p>Email: {{clientdetails.email}} </p>
+              <p>Address: {{clientdetails.address}} </p>
+              <p>Postal Code: {{clientdetails.postalcode}} </p>
+              <p>Zip Code: 9876543210 </p>
+              <p>Country: {{clientdetails.country}} </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--section-->
+  <div class="col">
+    <div class="shadowed-box bg-white mt-2">
+      <div class="box-header">
+        <a class="toggle-btn " data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+          aria-controls="collapseExample">View Projects</a>
+      </div>
+      <div class="bordered-list bg-white p-2 collapse " id="collapseExample">
+        <ul>
+          <li *ngFor="let project of projects">
+            <a href="#"><strong>{{project.projectname}}-</strong>
+              {{project.projecttype}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-wrap">
+  <!-- Modal -->
+  <div class="modal fade" id="profile_info" tabindex="-1" role="dialog" aria-labelledby="profile_infoTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="profile_infoTitle">Profile Information</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-wrap p-3">
+            <div class="client-image-wrap">
+              <div class="client-img">
+                <img src="assets/img/user.png" alt="">
+              </div>
+              <div class="client-desc">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="customFile">
+                  <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3">
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text"><fa-icon [icon]="['fas','user']"></fa-icon></div>
+                  </div>
+                  <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="First Name">
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text"><fa-icon [icon]="['fas','user']"></fa-icon></div>
+                  </div>
+                  <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Last Name">
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text"><fa-icon [icon]="['fas','envelope']"></fa-icon></div>
+                  </div>
+                  <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Email Address">
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text"><fa-icon [icon]="['fas','phone']"></fa-icon></div>
+                  </div>
+                  <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Phone Number">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text"><fa-icon [icon]="['fas','home']"></fa-icon></div>
+                  </div>
+                  <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Address (Line 1)">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text"><fa-icon [icon]="['fas','home']"></fa-icon></div>
+                  </div>
+                  <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Address (Line 2)">
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text"><fa-icon [icon]="['fas','chess-board']"></fa-icon></div>
+                  </div>
+                  <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Postal Code">
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text"><fa-icon [icon]="['fas','map-marked-alt']"></fa-icon></div>
+                  </div>
+                  <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="State">
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text"><fa-icon [icon]="['fas','map-pin']"></fa-icon></div>
+                  </div>
+                  <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="City">
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text"><fa-icon [icon]="['fas','map-marked-alt']"></fa-icon></div>
+                  </div>
+                  <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Country">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <textarea name="" class="form-control" placeholder="Add Description" rows="6"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

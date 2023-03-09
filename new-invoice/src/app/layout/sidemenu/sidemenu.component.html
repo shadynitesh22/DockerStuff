@@ -1,0 +1,79 @@
+<div class="offcanvas-left">
+  <aside id="left-panel" class="left-panel">
+    <div class="left-panel-wrap">
+      <div class="select-business-wrap">
+        <div class="dropdown">
+          <div class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <span class="round-fig mr-2">
+              <img src="assets/img/user.png" alt="" /></span>
+            Searchable Design
+          </div>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <span class="dropdown-item">Logged in as Searchable Design</span>
+            <a class="dropdown-item" href="profile.html">
+
+              <fa-icon [icon]="['fas','user']"></fa-icon> Account
+            </a>
+            <a class="dropdown-item" (click)="logout()"><fa-icon [icon]="['fas','power-off']"></fa-icon> Logout</a>
+          </div>
+        </div>
+      </div>
+      <div class="left-panel-lists mCustomScrollbar fixed-ht" data-mcs-theme="minimal-dark">
+        <ul>
+          <li class="active">
+            <a routerLink="./dashboard">
+              <fa-icon [icon]="['fas', 'tachometer-alt']" class="sidemenu-icons"></fa-icon>
+              Dashboard
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="./dashboard1">
+              <fa-icon [icon]="['fas', 'tachometer-alt']" class="sidemenu-icons"></fa-icon>
+              Dashboard 1
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="./projects/1">
+              <fa-icon [icon]="['fas', 'layer-group']" class="sidemenu-icons"></fa-icon>
+              Projects
+            </a>
+          </li>
+          <li>
+            <a routerLink="./clients/1" >
+              <fa-icon [icon]="['fas', 'user-tie']" class="sidemenu-icons"></fa-icon>
+              Clients
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="./invoice" >
+              <fa-icon [icon]="['fas', 'file-alt']" class="sidemenu-icons"></fa-icon>
+              Invoices
+            </a>
+          </li>
+          <li>
+            <a routerLink="./reports">
+              <fa-icon [icon]="['fas', 'chart-line']" class="sidemenu-icons"></fa-icon>
+              Reports
+            </a>
+          </li>
+          <li>
+            <a routerLink="#">
+              <fa-icon [icon]="['fas', 'file-invoice-dollar']" class="sidemenu-icons"></fa-icon>
+              Payments
+            </a>
+          </li>
+          <li>
+            <a routerLink="./setting">
+              <fa-icon [icon]="['fas', 'cog']" class="sidemenu-icons"></fa-icon> Business
+              Settings
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+</div>

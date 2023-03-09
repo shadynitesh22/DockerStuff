@@ -1,0 +1,440 @@
+<div id="wrapper" class="right-panel">
+  <!--section-->
+  <section class="dashboard-block">
+
+    <div class="page-content">
+      <div class="sort-box clearfix">
+        <div class="sort-dropdown">
+          <div class="btn-group">
+            <div class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <fa-icon [icon]="['fas', 'bars']"></fa-icon>
+            </div>
+            <div class="dropdown-menu">
+              <span class="dropdown-item">Sort Result By</span>
+              <a class="dropdown-item" href="#">Creation
+                Date</a>
+              <a class="dropdown-item" href="#">Due Date
+              </a>
+              <a class="dropdown-item" href="#">Amount</a>
+            </div>
+          </div>
+        </div>
+        <div class="search-bar-wrap">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search invoices">
+            <button type="submit" class="positioned-btn">
+              <fa-icon [icon]="['fas', 'search']"></fa-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="shadowed-box bg-white mt-3">
+        <div class="table-wrap">
+          <div class="table-responsive">
+            <table class="table mb-0">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Project Name</th>
+                  <th scope="col">Client</th>
+                  <th scope="col">Date Created</th>
+                  <th scope="col">Created By</th>
+                  <th scope="col">Payment</th>
+                  <th scope="col">Notes</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- ****************Loop From here********************** -->
+                <ng-container *ngFor="let invoice of invoice, let i=index">
+                  <tr>
+                    <td>
+                      <a routerLink=".//generated-invoice/{{invoice._id}}">{{invoice.projectname}}</a>
+                    </td>
+                    <td>
+                      <p>{{invoice.clientname}}</p>
+                    </td>
+                    <td>
+                      <p>{{invoice.issuedate}}</p>
+                    </td>
+                    <td>
+                      <p>Admin</p>
+                    </td>
+                    <td>
+                      <p>NRs. {{invoice.total}} /-</p>
+                    </td>
+                    <td>
+                      <p>Notes(additional)</p>
+                    </td>
+                    <td>
+                      <p>Due</p>
+                    </td>
+                    <td>
+                      <div class="action-btns">
+                        <button class="btn edit-btn" data-target="" data-toggle="modal" (click)="edit(i)">
+                          <fa-icon [icon]="['fas', 'edit']"></fa-icon>
+                        </button>
+                        <button class=" btn delete-btn" data-target="#delete_info" data-toggle="modal" (click)="delete(i)">
+                          <fa-icon [icon]="['fas','trash']"></fa-icon>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </ng-container>
+                <!-- <tr>
+                  <td>
+                    <p><strong><a href="invoice-single.html">Abc Project</a></strong></p>
+                  </td>
+                  <td>
+                    <p>Global Technologies</p>
+                  </td>
+                  <td>
+                    <p>02/02/2019</p>
+                  </td>
+                  <td>
+                    <p>Searchable Design</p>
+                  </td>
+                  <td>
+                    <p>$200.00 <span class="green-text">Paid</span></p>
+                    <p>$100.00 <span class="yellow-text">Due</span></p>
+                  </td>
+                  <td>
+                    <div class="disc-col">
+                      <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur,</p>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-secondary">Draft</span></td>
+                  <td>
+                    <div class="action-btns">
+                      <a routerLink="" title="edit" class="edit-btn">
+                        <fa-icon [icon]="['fas', 'edit']"></fa-icon>
+                      </a>
+                      <a href="#" title="delete" class="delete-btn">
+                        <fa-icon [icon]="['fas','times']"></fa-icon>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p><strong><a href="invoice-single.html">Abc Project</a></strong></p>
+                  </td>
+                  <td>
+                    <p>Ecommerce</p>
+                  </td>
+                  <td>
+                    <p>02/02/2019</p>
+                  </td>
+                  <td>
+                    <p>Searchable Design</p>
+                  </td>
+                  <td>
+                    <p>$200.00 <span class="green-text">Paid</span></p>
+                    <p>$100.00 <span class="yellow-text">Due</span></p>
+                  </td>
+                  <td>
+                    <div class="disc-col">
+                      <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur,</p>
+                    </div>
+                  </td>
+                  <td><span class="badge  badge-warning">Unpaid</span></td>
+                  <td>
+                    <div class="action-btns">
+                      <a href="#" title="edit" class="edit-btn">
+                        <fa-icon [icon]="['fas', 'edit']"></fa-icon>
+                      </a>
+                      <a href="#" title="delete" class="delete-btn">
+                        <fa-icon [icon]="['fas','times']"></fa-icon>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p><strong><a href="invoice-single.html">Abc Project</a></strong></p>
+                  </td>
+                  <td>
+                    <p>Ecommerce</p>
+                  </td>
+                  <td>
+                    <p>02/02/2019</p>
+                  </td>
+                  <td>
+                    <p>Searchable Design</p>
+                  </td>
+                  <td>
+                    <p>$200.00 <span class="green-text">Paid</span></p>
+                    <p>$100.00 <span class="yellow-text">Due</span></p>
+                  </td>
+                  <td>
+                    <div class="disc-col">
+                      <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur,</p>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-info">Partially Paid</span></td>
+                  <td>
+                    <div class="action-btns">
+                      <a href="#" title="edit" class="edit-btn">
+                        <fa-icon [icon]="['fas', 'edit']"></fa-icon>
+                      </a>
+                      <a href="#" title="delete" class="delete-btn">
+                        <fa-icon [icon]="['fas','times']"></fa-icon>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p><strong><a href="invoice-single.html">Abc Project</a></strong></p>
+                  </td>
+                  <td>
+                    <p>Ecommerce</p>
+                  </td>
+                  <td>
+                    <p>02/02/2019</p>
+                  </td>
+                  <td>
+                    <p>Searchable Design</p>
+                  </td>
+                  <td>
+                    <p>$200.00 <span class="green-text">Paid</span></p>
+                    <p>$100.00 <span class="yellow-text">Due</span></p>
+                  </td>
+                  <td>
+                    <div class="disc-col">
+                      <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur,</p>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-success">Paid</span></td>
+                  <td>
+                    <div class="action-btns">
+                      <a href="#" title="edit" class="edit-btn">
+                        <fa-icon [icon]="['fas', 'edit']"></fa-icon>
+                      </a>
+                      <a href="#" title="delete" class="delete-btn">
+                        <fa-icon [icon]="['fas','times']"></fa-icon>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p><strong><a href="invoice-single.html">Abc Project</a></strong></p>
+                  </td>
+                  <td>
+                    <p>Ecommerce</p>
+                  </td>
+                  <td>
+                    <p>02/02/2019</p>
+                  </td>
+                  <td>
+                    <p>Searchable Design</p>
+                  </td>
+                  <td>
+                    <p>$200.00 <span class="green-text">Paid</span></p>
+                    <p>$100.00 <span class="yellow-text">Due</span></p>
+                  </td>
+                  <td>
+                    <div class="disc-col">
+                      <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur,</p>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-danger">Cancelled</span></td>
+                  <td>
+                    <div class="action-btns">
+                      <a href="#" title="edit" class="edit-btn">
+                        <fa-icon [icon]="['fas', 'edit']"></fa-icon>
+                      </a>
+                      <a href="#" title="delete" class="delete-btn">
+                        <fa-icon [icon]="['fas','times']"></fa-icon>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+ -->
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+      <div class="pagination-wrap mt-3">
+        <nav aria-label="...">
+          <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active" aria-current="page">
+              <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+
+    <div class="modal-wrap">
+
+
+
+
+      <!-- <div class="modal fade" id="profile_info" tabindex="-1" role="dialog" aria-labelledby="profile_infoTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="profile_infoTitle">Profile
+              Information</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-wrap p-3">
+              <div class="client-image-wrap">
+                <div class="client-img">
+                  <img src="assets/img/user.png" alt="">
+                </div>
+                <div class="client-desc">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="customFile">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-3">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text"><fa-icon [icon]="['fas','user']"></fa-icon></div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="First Name" [(ngModel)]="params.firstname">
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text"><fa-icon [icon]="['fas','user']"></fa-icon></div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Last Name" [(ngModel)]="params.lastname">
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <fa-icon [icon]="['fas','envelope']"></fa-icon>
+                      </div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Email Address" [(ngModel)]="params.email">
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <fa-icon [icon]="['fas','phone']"></fa-icon></div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" [(ngModel)]="params.phone" placeholder="Phone Number"  >
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text"><fa-icon [icon]="['fas','home']"></fa-icon></div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Address (Line 1)" [(ngModel)]="params.address">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text"><fa-icon [icon]="['fas','home']"></fa-icon></div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Address (Line 2)" [(ngModel)]="params.address2">
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <fa-icon [icon]="['fas','chess-board']"></fa-icon>
+                      </div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Postal Code" [(ngModel)]="params.postalcode">
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text"><fa-icon [icon]="['fas','map-marked-alt']"></fa-icon></div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="State" [(ngModel)]="params.state">
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text"><fa-icon [icon]="['fas','map-pin']"></fa-icon></div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="City" [(ngModel)]="params.city">
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text"><fa-icon [icon]="['fas','map-marker-alt']"></fa-icon>
+                      </div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Country" [(ngModel)]="params.country">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <textarea name="" class="form-control" placeholder="Add Description" rows="6" [(ngModel)]="params.description"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="saveChange()" data-dismiss="modal">Save
+              changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <div class="modal fade" id="delete_info" tabindex="-1" role="dialog" aria-labelledby="delete_infoTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="delete_infoTitle">Delete
+              Information</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body text-center">
+            <p>Are you sure you want to delete?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="confirmDelete()">Ok</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
