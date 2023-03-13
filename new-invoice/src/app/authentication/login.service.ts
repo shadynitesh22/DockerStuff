@@ -23,7 +23,7 @@ export class LoginService {
 
 loginUser(value: any){
   return new Promise((resolve,reject)=>{
-    this.http.post('http://localhost:5200/new-invoice/v1/userLogin',value).subscribe((response)=>{
+    this.http.post('https://7e05-2400-1a00-b020-f1c6-d345-6f30-8dc5-ccc4.ap.ngrok.io/new-invoice/v1/userLogin',value).subscribe((response)=>{
 
 
     console.log(response);
@@ -47,7 +47,7 @@ loginUser(value: any){
 
 
   localStorage.setItem('hehe','hehe');
-  console.log( this.http.get<any>('http://localhost:5200/new-invoice/v1/invoice/getinvoice')  )
+  console.log( this.http.get<any>('https://7e05-2400-1a00-b020-f1c6-d345-6f30-8dc5-ccc4.ap.ngrok.io/new-invoice/v1/invoice/getinvoice')  )
   return new Promise((resolve,reject)=>{
     resolve(true)
   })

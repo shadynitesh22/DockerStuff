@@ -1,0 +1,14 @@
+authtoken: 23VN6GDLaKjcgsjXi5vDJy6CXuP_7bRHgxFxjpDduUdeyyK8J
+tunnels:
+  backend:
+    proto: http
+    addr: 5200
+    host_header: localhost:5200
+
+  frontend:
+    proto: http
+    addr: 4200
+    host_header: localhost:4200
+
+
+version: 2

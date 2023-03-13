@@ -22,7 +22,9 @@ const swaggerDocument = require('swagger-jsdoc')
 
 const app = express()
 
-app.use(cors());
+app.use(cors(
+    
+));
 app.use(bodyparser.json())
 
 app.use(session({
