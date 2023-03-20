@@ -1,4 +1,4 @@
-authtoken: 23VN6GDLaKjcgsjXi5vDJy6CXuP_7bRHgxFxjpDduUdeyyK8J
+authtoken: {your auth token }
 tunnels:
   backend:
     proto: http
